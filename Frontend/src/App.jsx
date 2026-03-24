@@ -6,6 +6,7 @@ import Signup from './components/pages/Signup'
 import Home from './components/Home'
 import DoctorDashboard from './components/pages/DoctorDashboard'
 import PatientDashboard from './components/pages/PatientDashboard'
+import DoctorProfile from './components/pages/DoctorProfile'
 import RoleRedirect from './components/RoleRedirect'
 
 const ProtectedRoute = ({ children }) => (
@@ -26,6 +27,7 @@ function App() {
       <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
       <Route path="/doctor-dashboard" element={<ProtectedRoute><DoctorDashboard /></ProtectedRoute>} />
       <Route path="/patient-dashboard" element={<ProtectedRoute><PatientDashboard /></ProtectedRoute>} />
+      <Route path="/doctor-profile" element={<ProtectedRoute><DoctorProfile /></ProtectedRoute>} />
     </Routes>
   )
 }
