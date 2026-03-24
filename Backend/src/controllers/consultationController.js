@@ -19,7 +19,7 @@ const saveConsultationNotes = async (req, res) => {
     const appt = await Appointment.findByIdAndUpdate(
       req.params.id,
       { $set: { consultationNotes, diagnosis, prescription, consultationFee, feePaid } },
-      { new: true }
+      { returnDocument: 'after' }
     ).populate('patient', 'firstName lastName email phone dob gender')
     if (!appt) return res.status(404).json({ error: 'Appointment not found' })
     res.json(appt)
@@ -33,7 +33,7 @@ const endConsultation = async (req, res) => {
     const appt = await Appointment.findByIdAndUpdate(
       req.params.id,
       { $set: { consultationEnded: true, status: 'Completed' } },
-      { new: true }
+      { returnDocument: 'after' }
     ).populate('patient', 'firstName lastName')
     if (!appt) return res.status(404).json({ error: 'Appointment not found' })
     res.json(appt)
