@@ -51,6 +51,7 @@ const updateAvailability = async (req, res) => {
       { $set: { availability: req.body.availability } },
       { new: true }
     )
+    if (!doctor) return res.status(404).json({ error: 'Doctor not found' })
     res.json(doctor)
   } catch (err) {
     res.status(500).json({ error: err.message })
