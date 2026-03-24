@@ -1,7 +1,6 @@
 const Doctor = require('../models/Doctor')
 const Appointment = require('../models/Appointment')
 
-// Upsert doctor profile on first login
 const syncDoctor = async (req, res) => {
   try {
     const { clerkId, firstName, lastName, email } = req.body
@@ -28,11 +27,17 @@ const getProfile = async (req, res) => {
 
 const updateProfile = async (req, res) => {
   try {
+    const allowed = ['firstName', 'lastName', 'title', 'designation', 'specialty',
+                     'experience', 'location', 'phone', 'bio', 'profileImage']
+    const update = {}
+    allowed.forEach(k => { if (req.body[k] !== undefined) update[k] = req.body[k] })
+
     const doctor = await Doctor.findOneAndUpdate(
       { clerkId: req.auth.userId },
-      { $set: req.body },
+      { $set: update },
       { new: true }
     )
+    if (!doctor) return res.status(404).json({ error: 'Doctor not found' })
     res.json(doctor)
   } catch (err) {
     res.status(500).json({ error: err.message })
@@ -77,10 +82,11 @@ const getDashboardStats = async (req, res) => {
     ])
 
     res.json({
+      doctor,
       stats: {
-        totalPatients: totalPatients.length,
+        totalPatients:         totalPatients.length,
         successfullyAppointed: confirmed,
-        pendingBookings: pending,
+        pendingBookings:       pending,
         requestedAppointments: requested,
       },
       todayAppointments,
