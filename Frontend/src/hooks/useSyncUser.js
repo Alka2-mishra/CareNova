@@ -5,7 +5,7 @@ const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
 
 export const useSyncUser = () => {
   const { user, isLoaded } = useUser()
-  const role = localStorage.getItem('mediconnect_role')
+  const role = localStorage.getItem('carenova_role')
 
   useEffect(() => {
     if (!isLoaded || !user) return

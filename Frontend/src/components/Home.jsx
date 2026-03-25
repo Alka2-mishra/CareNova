@@ -5,18 +5,18 @@ import { HeartPulse } from 'lucide-react'
 const Home = () => {
   const { user } = useUser()
   const { signOut } = useClerk()
-  const role = localStorage.getItem('mediconnect_role') || 'patient'
+  const role = localStorage.getItem('carenova_role') || 'patient'
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex flex-col">
       <header className="flex items-center justify-between px-8 py-4 border-b bg-white shadow-sm">
         <div className="flex items-center gap-2 text-blue-600 font-bold text-xl">
           <HeartPulse size={24} />
-          MediConnect
+          CareNova
         </div>
         <div className="flex items-center gap-3">
           <span className="text-sm px-3 py-1 rounded-full bg-blue-100 text-blue-700 font-medium capitalize">{role}</span>
-          <Button variant="outline" size="sm" onClick={() => { localStorage.removeItem('mediconnect_role'); signOut({ redirectUrl: '/' }) }}>
+          <Button variant="outline" size="sm" onClick={() => { localStorage.removeItem('carenova_role'); signOut({ redirectUrl: '/' }) }}>
             Sign Out
           </Button>
         </div>

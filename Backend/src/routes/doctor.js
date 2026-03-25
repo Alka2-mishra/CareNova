@@ -16,6 +16,24 @@ router.get('/debug', async (req, res) => {
   }
 })
 
+router.get('/search', async (req, res) => {
+  try {
+    const { q, specialty } = req.query
+    const filter = {}
+    if (q) filter.$or = [
+      { firstName: { $regex: q, $options: 'i' } },
+      { lastName:  { $regex: q, $options: 'i' } },
+      { specialty: { $regex: q, $options: 'i' } },
+      { location:  { $regex: q, $options: 'i' } },
+    ]
+    if (specialty && specialty !== 'All') filter.specialty = { $regex: specialty, $options: 'i' }
+    const doctors = await Doctor.find(filter, '-__v').limit(30)
+    res.json(doctors)
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+})
+
 router.post('/sync',        syncDoctor)
 router.get('/profile',      requireAuth, getProfile)
 router.put('/profile',      requireAuth, updateProfile)

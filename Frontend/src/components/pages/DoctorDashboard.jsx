@@ -333,7 +333,7 @@ const DoctorDashboard = () => {
       {/* Header */}
       <header className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm z-10">
         <div className="flex items-center gap-2 text-blue-600 font-bold text-xl">
-          <HeartPulse size={24} /> MediConnect
+          <HeartPulse size={24} /> CareNova
         </div>
         <div className="flex items-center gap-3">
           <span className="text-sm px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 font-medium">Doctor</span>
@@ -386,7 +386,7 @@ const DoctorDashboard = () => {
           {/* Sign out */}
           <div className="px-3 py-4 border-t border-gray-100 dark:border-gray-700">
             <button
-              onClick={() => { localStorage.removeItem('mediconnect_role'); signOut({ redirectUrl: '/' }) }}
+              onClick={() => { localStorage.removeItem('carenova_role'); signOut({ redirectUrl: '/' }) }}
               className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-900 transition-colors w-full"
             >
               <LogOut size={18} strokeWidth={1.8} /> Sign Out

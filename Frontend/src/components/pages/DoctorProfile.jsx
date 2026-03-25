@@ -63,7 +63,7 @@ const DoctorProfile = () => {
       {/* Header */}
       <header className="flex items-center justify-between px-8 py-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm">
         <div className="flex items-center gap-2 text-blue-600 font-bold text-xl">
-          <HeartPulse size={24} /> MediConnect
+          <HeartPulse size={24} /> CareNova
         </div>
         <div className="flex items-center gap-3">
           <ThemeToggle />

@@ -25,7 +25,7 @@ const Landing = () => {
   if (isSignedIn) return <Navigate to="/home" replace />
 
   const handleRole = (role) => {
-    localStorage.setItem('mediconnect_role', role)
+    localStorage.setItem('carenova_role', role)
     navigate('/login')
   }
 
@@ -39,7 +39,7 @@ const Landing = () => {
 
         <div>
           <h1 className="text-5xl font-bold text-gray-900 tracking-tight">
-            Medi<span className="text-blue-600">Connect</span>
+            Care<span className="text-blue-600">Nova</span>
           </h1>
           <p className="text-lg text-gray-500 mt-3 max-w-md">
             Your trusted platform for seamless healthcare connections.
